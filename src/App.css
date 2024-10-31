@@ -3,6 +3,6 @@
     top: 130px; /* Start above the visible area */
   }
   to {
-    top: 100vh; /* End at the bottom of the viewport */
+    top: 85vh; /* End at the bottom of the viewport */
   }
 }
