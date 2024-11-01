@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { wordsToGuess } from "../wordsToGuess";
+import { wordsToGuess } from "../utils/wordsToGuess";
 
 const useGetWordToGuess = () => {
   const random = Math.floor(Math.random() * wordsToGuess.length);

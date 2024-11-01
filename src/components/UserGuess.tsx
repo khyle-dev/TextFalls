@@ -1,18 +1,17 @@
-import React, { useEffect, useState } from "react";
-import useGetWordToGuess from "../hooks/useGetWordToGuess";
+import useGetText from "../hooks/useGetText";
+import useGetTextStore from "../hooks/useGetTextStore";
 
 const UserGuess = () => {
-  const { wordToGuess } = useGetWordToGuess();
-  const holdWordToGuess = wordToGuess;
+  const selectedText = useGetTextStore((state) => state.selectedText);
 
   return (
     <>
-      {holdWordToGuess.map((word, index) => (
+      {selectedText.map((text, index) => (
         <div
           key={index}
-          className="flex w-10 h-10 border-2 border-[#4CCD99] rounded-lg justify-center items-center font-bold"
+          className="flex w-10 h-10 border-2 text-white border-[#4CCD99] rounded-lg justify-center items-center font-bold"
         >
-          {word}
+          {text}
         </div>
       ))}
     </>

@@ -1,18 +1,16 @@
-import { useState } from "react";
-import useGetWordToGuess from "../hooks/useGetWordToGuess";
+import useGetWordStore from "../hooks/useGetWordStore";
 
 const DisplayWordToGuess = () => {
-  const { wordToGuess } = useGetWordToGuess();
-  const holdWordToGuess = wordToGuess;
+  const wordToGuess = useGetWordStore((state) => state.wordToGuess);
 
   return (
     <div className="flex space-x-2">
-      {holdWordToGuess.map((letter, index) => (
+      {wordToGuess.map((letter, index) => (
         <span
           key={index}
           className="flex w-10 h-10 bg-[#4CCD99] rounded-lg justify-center items-center font-bold"
         >
-          {letter}
+          {letter || "_"}
         </span>
       ))}
     </div>

@@ -1,8 +1,8 @@
 @keyframes fall {
-  from {
-    top: 130px; /* Start above the visible area */
+  0% {
+    transform: translateY(0); /* Start at the top */
   }
-  to {
-    top: 85vh; /* End at the bottom of the viewport */
+  100% {
+    transform: translateY(100vh); /* End at the bottom of the viewport */
   }
 }
