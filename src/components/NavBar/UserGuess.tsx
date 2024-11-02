@@ -1,8 +1,7 @@
-import useGetTextStore from "../stores/useGetTextStore";
+import useGetTextStore from "../../stores/useGetTextStore";
 
 const UserGuess = () => {
   const selectedText = useGetTextStore((state) => state.selectedText);
-
   return (
     <>
       {selectedText.map((text, index) => (

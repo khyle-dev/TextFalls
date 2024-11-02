@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
-import useGetText from "../hooks/useGetText";
-import useGetTextStore from "../stores/useGetTextStore";
-
-import useGameStateStore from "../stores/useGameStateStore";
+import useGetTextStore from "../../stores/useGetTextStore";
+import useGameStateStore from "../../stores/useGameStateStore";
 
 interface FallingLetters {
   position: number;
@@ -30,7 +28,7 @@ const FallingLetters = () => {
 
   useEffect(() => {
     if (gameState) {
-      const intervalId = setInterval(displayTextFall, 1000);
+      const intervalId = setInterval(displayTextFall, 500);
 
       return () => clearInterval(intervalId);
     }
@@ -38,12 +36,13 @@ const FallingLetters = () => {
 
   return (
     <>
-      {fallingLetters.map((fall) => (
+      {fallingLetters.map((fall, index) => (
         <button
+          key={index}
           onClick={() => getText(fall.letter)}
           style={{
             left: fall.position,
-            animation: "fall 5s linear forwards",
+            animation: "fall 10s linear forwards",
           }}
           className="absolute h-10 w-10 bg-[#303030] text-white rounded-lg hover:bg-red-700"
         >
