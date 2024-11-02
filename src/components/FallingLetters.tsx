@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import useGetText from "../hooks/useGetText";
-import useGetTextStore from "../hooks/useGetTextStore";
+import useGetTextStore from "../stores/useGetTextStore";
 
-import useGameStateStore from "../hooks/useGameStateStore";
+import useGameStateStore from "../stores/useGameStateStore";
 
 interface FallingLetters {
   position: number;

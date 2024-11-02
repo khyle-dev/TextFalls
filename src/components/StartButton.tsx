@@ -1,5 +1,5 @@
 import React from "react";
-import useGameStateStore from "../hooks/useGameStateStore";
+import useGameStateStore from "../stores/useGameStateStore";
 
 const StartButton = () => {
   const toggleGameState = useGameStateStore((state) => state.toggleGameState);

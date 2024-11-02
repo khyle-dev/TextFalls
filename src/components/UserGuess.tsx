@@ -1,5 +1,4 @@
-import useGetText from "../hooks/useGetText";
-import useGetTextStore from "../hooks/useGetTextStore";
+import useGetTextStore from "../stores/useGetTextStore";
 
 const UserGuess = () => {
   const selectedText = useGetTextStore((state) => state.selectedText);

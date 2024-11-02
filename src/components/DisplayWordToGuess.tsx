@@ -1,8 +1,9 @@
-import useGetWordStore from "../hooks/useGetWordStore";
+import useGetTextStore from "../stores/useGetTextStore";
 
 const DisplayWordToGuess = () => {
-  const wordToGuess = useGetWordStore((state) => state.wordToGuess);
+  const wordToGuess = useGetTextStore((state) => state.wordToGuess);
 
+  console.log(wordToGuess);
   return (
     <div className="flex space-x-2">
       {wordToGuess.map((letter, index) => (
@@ -10,7 +11,7 @@ const DisplayWordToGuess = () => {
           key={index}
           className="flex w-10 h-10 bg-[#4CCD99] rounded-lg justify-center items-center font-bold"
         >
-          {letter || "_"}
+          {letter}
         </span>
       ))}
     </div>
