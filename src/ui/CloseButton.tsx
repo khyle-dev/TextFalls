@@ -11,11 +11,8 @@ const CloseButton = () => {
   };
 
   return (
-    <button
-      onClick={handleClose}
-      className="py-2 px-2 rounded-lg bg-red-700 ml-auto"
-    >
-      Exit Game
+    <button onClick={handleClose} className="ml-auto pr-4">
+      ❌
     </button>
   );
 };

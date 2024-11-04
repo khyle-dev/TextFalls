@@ -2,6 +2,19 @@ import useGetTextStore from "../../stores/useGetTextStore";
 
 const UserGuess = () => {
   const selectedText = useGetTextStore((state) => state.selectedText);
+  const wordToGuess = useGetTextStore((state) => state.wordToGuess);
+  const reset = useGetTextStore((state) => state.reset);
+  const joinSelectedText = selectedText.join("");
+  const joinWordToGuess = wordToGuess.join("");
+
+  if (!selectedText.includes(null)) {
+    if (joinSelectedText === joinWordToGuess) {
+      console.log("nice");
+    } else {
+      reset();
+    }
+  }
+
   return (
     <>
       {selectedText.map((text, index) => (

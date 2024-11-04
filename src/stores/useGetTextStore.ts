@@ -5,7 +5,7 @@ type Props = {
   wordToGuess: string[];
   selectedText: (string | null)[];
   currentIndex: number;
-  getText: (value: string) => void;
+  getText: (value: string, index: number) => void;
   reset: () => void;
 };
 
@@ -16,7 +16,7 @@ const useGetTextStore = create<Props>((set) => ({
   selectedText: Array(wordsToGuess[0].length).fill(null), // Set to match the initial word length
   currentIndex: 0,
 
-  getText: (value: string) =>
+  getText: (value: string, index: number) =>
     set((state) => {
       if (state.currentIndex < state.wordToGuess.length) {
         const newSelectedText = [...state.selectedText];

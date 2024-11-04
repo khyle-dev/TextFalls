@@ -4,14 +4,9 @@ import DisplayWordToGuess from "./DisplayWordToGuess";
 import UserGuess from "./UserGuess";
 import useGameStateStore from "../../stores/useGameStateStore";
 import CloseButton from "../../ui/CloseButton";
-import useGetTextStore from "../../stores/useGetTextStore";
 
 const NavBar = () => {
   const gameState = useGameStateStore((state) => state.gameState);
-  const wordToGuessArray = useGetTextStore((state) => state.wordToGuess);
-  const selectedTextArray = useGetTextStore((state) => state.selectedText);
-  const wordToGuess = wordToGuessArray.join("");
-  const selectedText = selectedTextArray.join("");
 
   return (
     <>
@@ -28,8 +23,9 @@ const NavBar = () => {
                 </div>
               </div>
             </div>
-            <CloseButton />
-            {selectedText === wordToGuess ? <div>HELLO</div> : <div>sup</div>}
+            <div className="flex w-full">
+              <CloseButton />
+            </div>
           </>
         )}
       </nav>
