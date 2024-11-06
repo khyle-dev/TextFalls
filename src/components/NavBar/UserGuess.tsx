@@ -1,20 +1,7 @@
 import useGetTextStore from "../../stores/useGetTextStore";
-import Winner from "../../ui/Winner";
 
 const UserGuess = () => {
   const selectedText = useGetTextStore((state) => state.selectedText);
-  const wordToGuess = useGetTextStore((state) => state.wordToGuess);
-  const reset = useGetTextStore((state) => state.reset);
-  const joinSelectedText = selectedText.join("");
-  const joinWordToGuess = wordToGuess.join("");
-
-  if (!selectedText.includes(null)) {
-    if (joinSelectedText === joinWordToGuess) {
-      return <Winner />;
-    } else {
-      return <Winner />;
-    }
-  }
 
   return (
     <>

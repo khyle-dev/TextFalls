@@ -3,7 +3,6 @@ import useGetTextStore from "../../stores/useGetTextStore";
 const DisplayWordToGuess = () => {
   const wordToGuess = useGetTextStore((state) => state.wordToGuess);
 
-  console.log(wordToGuess);
   return (
     <div className="flex space-x-2">
       {wordToGuess.map((letter, index) => (

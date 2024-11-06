@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { wordsToGuess } from "../utils/wordsToGuess";
+import axios from "axios";
 
 type Props = {
   wordToGuess: string[];
@@ -7,6 +8,7 @@ type Props = {
   currentIndex: number;
   getText: (value: string, index: number) => void;
   reset: () => void;
+  fetchWord: () => void;
 };
 
 const useGetTextStore = create<Props>((set) => ({
@@ -15,8 +17,9 @@ const useGetTextStore = create<Props>((set) => ({
     wordsToGuess[Math.floor(Math.random() * wordsToGuess.length)].split(""),
   selectedText: Array(wordsToGuess[0].length).fill(null), // Set to match the initial word length
   currentIndex: 0,
+  word: "",
 
-  getText: (value: string, index: number) =>
+  getText: (value, index) =>
     set((state) => {
       if (state.currentIndex < state.wordToGuess.length) {
         const newSelectedText = [...state.selectedText];
@@ -39,6 +42,12 @@ const useGetTextStore = create<Props>((set) => ({
         currentIndex: 0, // Reset index
       };
     }),
+
+  fetchWord: async () => {
+    const response = await axios.get(
+      "https://random-word-api.herokuapp.com/word"
+    );
+  },
 }));
 
 export default useGetTextStore;

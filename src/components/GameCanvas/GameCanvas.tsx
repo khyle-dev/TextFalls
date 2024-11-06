@@ -6,7 +6,7 @@ const GameCanvas = () => {
   const gameState = useGameStateStore((state) => state.gameState);
 
   return (
-    <div className="w-full h-screen overflow-hidden bg-[#5A6B64]">
+    <div className="relative w-full h-screen overflow-hidden bg-[#5A6B64]">
       {gameState ? <FallingLetters /> : <StartView />}
     </div>
   );
