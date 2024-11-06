@@ -1,17 +1,10 @@
-import useGameStateStore from "../stores/useGameStateStore";
-import useGetTextStore from "../stores/useGetTextStore";
+import useGameStartStop from "../utils/useGameStartStop";
 
 const CloseButton = () => {
-  const toggleGameState = useGameStateStore((state) => state.toggleGameState);
-  const reset = useGetTextStore((state) => state.reset);
-
-  const handleClose = () => {
-    toggleGameState();
-    reset();
-  };
+  const { gameStartStop } = useGameStartStop();
 
   return (
-    <button onClick={handleClose} className="ml-auto pr-4">
+    <button onClick={gameStartStop} className="ml-auto pr-4">
       ❌
     </button>
   );

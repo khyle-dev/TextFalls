@@ -1,4 +1,5 @@
 import useGetTextStore from "../../stores/useGetTextStore";
+import Winner from "../../ui/Winner";
 
 const UserGuess = () => {
   const selectedText = useGetTextStore((state) => state.selectedText);
@@ -9,9 +10,9 @@ const UserGuess = () => {
 
   if (!selectedText.includes(null)) {
     if (joinSelectedText === joinWordToGuess) {
-      console.log("nice");
+      return <Winner />;
     } else {
-      reset();
+      return <Winner />;
     }
   }
 

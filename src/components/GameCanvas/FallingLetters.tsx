@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import useGetTextStore from "../../stores/useGetTextStore";
 import useGameStateStore from "../../stores/useGameStateStore";
+import { LETTERS, FALL_SPEED, FALL_INTERVAL } from "../../utils/constants";
 
 interface FallingLetters {
   position: number;
@@ -10,15 +11,12 @@ interface FallingLetters {
 const FallingLetters = () => {
   const gameState = useGameStateStore((state) => state.gameState);
   const getText = useGetTextStore((state) => state.getText);
-
   const [fallingLetters, setFallingLetters] = useState<FallingLetters[]>([]);
-  const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-  const arrayLetters = letters.split("");
 
   const displayTextFall = () => {
     const getPosition = Math.floor(Math.random() * window.innerWidth);
-    const randomLetter = Math.floor(Math.random() * arrayLetters.length);
-    const getLetter = arrayLetters[randomLetter];
+    const randomLetter = Math.floor(Math.random() * LETTERS.length);
+    const getLetter = LETTERS[randomLetter];
 
     setFallingLetters((prevCount) => [
       ...prevCount,
@@ -28,7 +26,7 @@ const FallingLetters = () => {
 
   useEffect(() => {
     if (gameState) {
-      const intervalId = setInterval(displayTextFall, 500);
+      const intervalId = setInterval(displayTextFall, FALL_INTERVAL);
 
       return () => clearInterval(intervalId);
     }
@@ -45,7 +43,7 @@ const FallingLetters = () => {
           }}
           style={{
             left: fall.position,
-            animation: "fall 10s linear forwards",
+            animation: `fall linear forwards ${FALL_SPEED}`,
           }}
           className={`${
             fall.position === 0 ? "hidden" : "block"
