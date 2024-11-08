@@ -11,6 +11,8 @@ interface FallingLetters {
 const FallingLetters = () => {
   const gameState = useGameStateStore((state) => state.gameState);
   const getText = useGetTextStore((state) => state.getText);
+  const checkAnswer = useGetTextStore((state) => state.checkAnswer);
+
   const [fallingLetters, setFallingLetters] = useState<FallingLetters[]>([]);
 
   const displayTextFall = () => {
@@ -40,6 +42,7 @@ const FallingLetters = () => {
           onClick={() => {
             fallingLetters.splice(index, 1, { position: 0, letter: "" });
             getText(fall.letter, index);
+            checkAnswer();
           }}
           style={{
             left: fall.position,

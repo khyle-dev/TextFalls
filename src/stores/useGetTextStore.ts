@@ -9,6 +9,8 @@ type Props = {
   getText: (value: string, index: number) => void;
   reset: () => void;
   fetchWord: () => void;
+  checkAnswer: () => void;
+  isCorrect: boolean | null;
 };
 
 const useGetTextStore = create<Props>((set) => ({
@@ -18,6 +20,7 @@ const useGetTextStore = create<Props>((set) => ({
   selectedText: Array(wordsToGuess[0].length).fill(null), // Set to match the initial word length
   currentIndex: 0,
   word: "",
+  isCorrect: null,
 
   getText: (value, index) =>
     set((state) => {
@@ -40,6 +43,7 @@ const useGetTextStore = create<Props>((set) => ({
         wordToGuess: newWord, // Set a new random word
         selectedText: Array(newWord.length).fill(null), // Reset selectedText to match the new word length
         currentIndex: 0, // Reset index
+        isCorrect: null,
       };
     }),
 
@@ -48,6 +52,29 @@ const useGetTextStore = create<Props>((set) => ({
       "https://random-word-api.herokuapp.com/word"
     );
   },
+
+  checkAnswer: () =>
+    set((state) => {
+      const guess = state.wordToGuess.toString();
+      const selected = state.selectedText.toString();
+
+      if (!state.selectedText.includes(null)) {
+        if (guess === selected) {
+          console.log("CORRECT");
+          return {
+            isCorrect: true,
+          };
+        } else {
+          const timeout = setTimeout(state.reset, 1000);
+
+          () => clearTimeout(timeout);
+          console.log("WRONG");
+          return { isCorrect: false };
+        }
+      }
+
+      return {};
+    }),
 }));
 
 export default useGetTextStore;

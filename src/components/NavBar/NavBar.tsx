@@ -10,9 +10,13 @@ const NavBar = () => {
 
   return (
     <>
-      <nav className="flex w-full h-40 bg-[#303030] p-6 space-x-14 items-center text-white shadow-black shadow-sm">
-        <Logo />
-        <Divider />
+      <nav className="flex w-full h-40 bg-[#303030] p-6 space-x-14 items-center text-white shadow-black shadow-sm justify-center md:justify-normal">
+        {!gameState ? (
+          <>
+            <Logo />
+            <Divider />
+          </>
+        ) : null}
         {gameState && (
           <>
             <div className="flex flex-col space-y-2">
@@ -23,6 +27,7 @@ const NavBar = () => {
                 </div>
               </div>
             </div>
+
             <div className="flex w-full">
               <CloseButton />
             </div>

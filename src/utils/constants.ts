@@ -6,4 +6,4 @@ export const LETTERS = STRING_LETTERS.split("");
 export const FALL_SPEED = "10s";
 
 // FALLING LETTERS INTERVAL
-export const FALL_INTERVAL = 1000;
+export const FALL_INTERVAL = 500;
